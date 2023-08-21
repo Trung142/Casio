@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="style2.js" ></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div class="title">Casio</div>
+        <div class="results">
+            <span class="input"></span>
+        </div>
+        <div class="buttons">
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button">+</button>
+        </div>
+        <div class="buttons">
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button">-</button>
+        </div>
+        <div class="buttons">
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button">*</button>
+        </div>
+        <div class="buttons">
+            <button class="button">0</button>
+            <button class="button">00</button>
+            <button class="button">.</button>
+            <button class="button">/</button>
+        </div>
+        <div class="buttons">
+            <button class="button">%</button>
+            <button class="button">C</button>
+            <button class="button">DEL</button>
+            <button class="button">=</button>
+        </div>
+    </div>
+    <script>
+        var inputs = document.querySelector('.input');
+        var items = Array.from(document.querySelectorAll('.button'));
+        items.forEach(function(btn){
+            btn.addEventListener('click',function(){
+                if(inputs.innerHTMl == "0"){
+                    inputs.innerHTML = '';
+                }
+                if(btn.innerHTML == "C"){
+                    inputs.innerHTML = '';
+                }
+                else if(btn.innerHTML == "DEL"){
+                    const check = Array.from(inputs.innerHTML);
+                    check.splice(check.length-1,1);
+                    if(check.innerHTML !=0){
+                        inputs.innerHTML = check.join('');
+                    }else{
+                        inputs.innerHTML = "0";
+                    }
+                }
+                else if(btn.innerHTML =="="){
+                   if(inputs.innerHTML != ''){
+                        inputs.innerHTML = eval(inputs.innerHTML);
+                   }
+                   else{
+                    onputs.innerHTML ='';
+                   }
+                }
+                else{
+                    inputs.innerHTML += btn.innerHTML;
+                }
+            })
+        })
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>
